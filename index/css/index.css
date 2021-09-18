@@ -1,4 +1,9 @@
-body{margin:0;padding:0;color:#222;font-family:"SF Pro SC","SF Pro Text","SF Pro Icons",PingFang SC,Lantinghei SC,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif}
+/*!
+ * Author:iowen
+ * Author URI:https://www.iowen.cn/
+ * Version: 1.0
+ */
+ body{margin:0;padding:0;color:#222;font-family:"SF Pro SC","SF Pro Text","SF Pro Icons",PingFang SC,Lantinghei SC,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif}
 body a{color:#555}
 body a:hover{color:#c72f39}
 body a:visited{color:#111}
@@ -40,7 +45,7 @@ to{top:0}
 .frame .button-group a{display:flex;margin-bottom:10px;flex-direction:column;align-items:center;justify-content:center;font-size:13px;height:40px;width:150px;color:#181818!important;line-height:37px;border:none;transition:none;cursor:pointer;transition:.3s}
 .frame .button-group a .border-bottom{height:2px;width:30px;background:#4a4a4a;animation:animationVisible 1s linear 0s infinite alternate}
 .frame .button-group a:last-child .border-bottom{animation-delay:1s}
-.frame .button-group a:hover{background:hsla(0,0%,100%,.7);background-color:#ff6a00;color:#fff!important}
+.frame .button-group a:hover{background:hsla(0,0%,100%,.7);background-color:#c72f39;color:#fff!important}
 .frame .button-group a:hover .border-bottom{background:transparent}
 @media only screen and (min-width:769px){.frame .button-group{display:flex}
 }@media only screen and (max-width:768px){.frame .button-group .second-button{margin-left:12px}
