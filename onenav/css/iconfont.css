@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 1625911 */
-  src: url('./fonts/iconfont.woff2?t=1627493826118') format('woff2'),
-       url('./fonts/iconfont.woff?t=1627493826118') format('woff'),
-       url('./fonts/iconfont.ttf?t=1627493826118') format('truetype');
+  src: url('./fonts/iconfont.woff2?t=1657027027171') format('woff2'),
+       url('./fonts/iconfont.woff?t=1657027027171') format('woff'),
+       url('./fonts/iconfont.ttf?t=1657027027171') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,46 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-qr:before {
+  content: "\e637";
+}
+
+.icon-upload:before {
+  content: "\e6a1";
+}
+
+.icon-down:before {
+  content: "\e6a4";
+}
+
+.icon-facebook-f:before {
+  content: "\e638";
+}
+
+.icon-google:before {
+  content: "\e87a";
+}
+
+.icon-twitter:before {
+  content: "\e882";
+}
+
+.icon-alipay:before {
+  content: "\e8de";
+}
+
+.icon-dingdingdingd:before {
+  content: "\e7c0";
+}
+
+.icon-huawei:before {
+  content: "\e623";
+}
+
+.icon-gitee:before {
+  content: "\e629";
 }
 
 .icon-random:before {
@@ -37,11 +77,7 @@
   content: "\e649";
 }
 
-.icon-shangchuan:before {
-  content: "\e637";
-}
-
-.icon-upload:before {
+.icon-upload-wd:before {
   content: "\e761";
 }
 
@@ -135,14 +171,6 @@
 
 .icon-huabanfuben:before {
   content: "\e62d";
-}
-
-.icon-xiazai:before {
-  content: "\e6c3";
-}
-
-.icon-down:before {
-  content: "\e6cc";
 }
 
 .icon-en:before {
@@ -281,10 +309,6 @@
   content: "\e61e";
 }
 
-.icon-download:before {
-  content: "\e604";
-}
-
 .icon-heart:before {
   content: "\e630";
 }
@@ -339,10 +363,6 @@
 
 .icon-name:before {
   content: "\e7fb";
-}
-
-.icon-cloud-download:before {
-  content: "\e61a";
 }
 
 .icon-like:before {
@@ -475,10 +495,6 @@
 
 .icon-github:before {
   content: "\e64a";
-}
-
-.icon-qr:before {
-  content: "\e60d";
 }
 
 .icon-qq:before {
