@@ -72,6 +72,10 @@ function StickyNavigation() {
 			else{
 				width = parseFloat(this.currentTab.css('width'))-40;
 				this.ultimateTab = this.currentTab.offset().left+20;
+				if(width<6){
+					width = 6;
+					this.ultimateTab -=3;
+				}
 				left = this.ultimateTab;
 			}
 		}
