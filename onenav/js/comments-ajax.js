@@ -3,7 +3,7 @@
  * @Author URI: https://www.iowen.cn/
  * @Date: 2021-06-03 08:55:59
  * @LastEditors: iowen
- * @LastEditTime: 2023-02-01 14:43:12
+ * @LastEditTime: 2023-02-03 00:17:23
  * @FilePath: \onenav\js\comments-ajax.js
  * @Description: 
  */
@@ -14,6 +14,7 @@ var cancel = $('#cancel-comment-reply-link');
 //提交评论
 $(document).on('click', "#commentform #submit", function () {
 	var _this = $(this);
+	var _form = _this.closest('form'); 
 	captcha_ajax(_this, '', function (n) {
 		var data = n.html;
 		if (n.status && data) {
@@ -42,8 +43,8 @@ $(document).on('click', "#commentform #submit", function () {
 			showAlert(JSON.parse('{"status":1,"msg":"提交成功!"}'));
 			$('#comment').val(''); 
 			cancel[0].click();
-			$('[name="image_captcha"]').val('');
-			$('.image-captcha').click();
+			_form.find('[name="image_captcha"]').val('');
+			_form.find('.image-captcha').click();
 		}
 	});
 	return false;
