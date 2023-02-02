@@ -1,56 +1,51 @@
-jQuery(document).ready(function(jQuery) {
-	var __cancel = $('#cancel-comment-reply-link'),
-	__cancel_text = __cancel.text(),
-	__list = 'comment-list'; 
-	$(document).on("submit", "#commentform", function() {
-		$.ajax({
-			url: theme.ajaxurl,
-			data: $(this).serialize() + "&action=ajax_comment",
-			type: $(this).attr('method'), 
-            beforeSend: showAlert(JSON.parse('{"status":2,"msg":"提交中...."}')),
-			error: function(request) {
-				showAlert(JSON.parse(request.responseText));
-			},
-			success: function(data) {
-				$('textarea').each(function() {
-					this.value = ''
-				});
-				var cancel = document.getElementById('cancel-comment-reply-link'),
-					temp = document.getElementById('wp-temp-form-div'),
-                    respond = document.getElementById('respond'), 
-					post = document.getElementById('comment_post_ID').value,
-                    parent = document.getElementById('comment_parent').value;
-                    $text = $(data);
-				if (parent != '0') {
-                    $children = $('<ul class="children"></ul>');
-                    $('#respond').before($children);
-                    $children.html($text);
-				} else if (!$('.' + __list ).length) {
-                    $children = $('<ul class="' + __list + '"></ul>');
-					if (theme.formpostion == 'bottom') {
-						$('#respond').before($children);
-					} else {
-						$('#respond').after($children);
-					}
-                    $children.html($text);
+/*
+ * @Author: iowen
+ * @Author URI: https://www.iowen.cn/
+ * @Date: 2021-06-03 08:55:59
+ * @LastEditors: iowen
+ * @LastEditTime: 2023-02-01 14:43:12
+ * @FilePath: \onenav\js\comments-ajax.js
+ * @Description: 
+ */
+
+var _list = 'comment-list'; 
+var cancel = $('#cancel-comment-reply-link');
+
+//提交评论
+$(document).on('click', "#commentform #submit", function () {
+	var _this = $(this);
+	captcha_ajax(_this, '', function (n) {
+		var data = n.html;
+		if (n.status && data) {
+			var parent = $('#comment_parent').val();
+                $text = $(data);
+			if (parent != '0') {
+                $children = $('<ul class="children"></ul>');
+                $('#respond').before($children);
+                $children.html($text);
+			} else if (!$('.' + _list ).length) {
+                $children = $('<ul class="' + _list + '"></ul>');
+				if (theme.formpostion == 'bottom') {
+					$('#respond').before($children);
 				} else {
-					if (theme.order == 'asc') {
-						$('.' + __list ).append($text); 
-					} else {
-						$('.' + __list ).prepend($text); 
-					}
-                }
-                $text.children(".new-comment").animate({opacity : 0},2000);
-				showAlert(JSON.parse('{"status":1,"msg":"提交成功!"}'));
-				cancel.style.display = 'none';
-				cancel.onclick = null;
-				document.getElementById('comment_parent').value = '0';
-				if (temp && respond) {
-					temp.parentNode.insertBefore(respond, temp);
-					temp.parentNode.removeChild(temp)
+					$('#respond').after($children);
 				}
-			}
-		});
-		return false;
+                $children.html($text);
+			} else {
+				if (theme.order == 'asc') {
+					$('.' + _list ).append($text); 
+				} else {
+					$('.' + _list ).prepend($text); 
+				}
+            }
+            $text.children(".new-comment").animate({opacity : 0},2000);
+			showAlert(JSON.parse('{"status":1,"msg":"提交成功!"}'));
+			$('#comment').val(''); 
+			cancel[0].click();
+			$('[name="image_captcha"]').val('');
+			$('.image-captcha').click();
+		}
 	});
+	return false;
 });
+
