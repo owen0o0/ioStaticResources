@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 1625911 */
-  src: url('./fonts/iconfont.woff2?t=1676017477195') format('woff2'),
-       url('./fonts/iconfont.woff?t=1676017477195') format('woff'),
-       url('./fonts/iconfont.ttf?t=1676017477195') format('truetype');
+  src: url('./fonts/iconfont.woff2?t=1676542791448') format('woff2'),
+       url('./fonts/iconfont.woff?t=1676542791448') format('woff'),
+       url('./fonts/iconfont.ttf?t=1676542791448') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-hide-line:before {
+  content: "\e6cf";
+}
+
+.icon-competence:before {
+  content: "\e633";
+}
+
+.icon-user-rights:before {
+  content: "\e639";
+}
+
+.icon-security:before {
+  content: "\e6ba";
+}
+
+.icon-phone-num:before {
+  content: "\eb75";
 }
 
 .icon-key-circle:before {
@@ -421,7 +441,7 @@
   content: "\e606";
 }
 
-.icon-gonggao4:before {
+.icon-email:before {
   content: "\e7b2";
 }
 
