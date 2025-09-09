@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex">
+  <title>io-fx18</title>
+  <meta name="author" content="iowen.cn">
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;    
+      font-family: PingFang SC -apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans GB, Microsoft YaHei, 微软雅黑, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, Arial, sans-serif;
+    }
+
+    body{
+      position: relative;
+      background-color: #000;
+      height:100vh;
+      overflow: hidden;
+    }
+
+    .space-box {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .space-box:before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .32) 100%), linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, .68) 100%);
+    }
+
+    .earth-box {
+      position: relative;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #96baff7a, 0 0 60px 12px #96baff52;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      transform-origin: center center;
+      transition: transform .3s ease-in-out;
+    }
+    .earth-box:after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 8px 4px #3b68c4fa inset, -24px 0 12px 2px #3b68c414 inset, 0 0 48px 48px #3b68c447 inset, -48px 0 24px 48px #3b68c414 inset;
+      animation: earth-box-anim 1.8s forwards .9s ease-in-out;
+      transition: box-shadow .3s ease-in-out;
+    }
+
+    @keyframes earth-box-anim {
+      0% {
+        box-shadow: 0 0 8px 4px #3b68c4fa inset, -24px 0 12px 2px #3b68c414 inset, 0 0 48px 48px #3b68c447 inset, -48px 0 24px 48px #3b68c414 inset
+      }
+    
+      to {
+        box-shadow: 0 0 8px 4px #3b68c4fa inset, 24px 0 12px 2px #3b68c494 inset, 0 8px 48px 48px #3b68c447 inset, 48px 0 24px 48px #3b68c447 inset
+      }
+    }
+
+    .earth {
+      width: 100%;
+      height: 100%;
+      background-size: 200%;
+      animation: earth-rotate 80s linear infinite;
+      will-change: background-position;
+      filter: brightness(2.4) contrast(1.2);
+      background-color: #00124d2e;
+    }
+    @keyframes earth-rotate {
+      0% {
+        background-position: calc(120% + 120px) 0
+      }
+    
+      to {
+        background-position: calc(-80% + 120px) 0
+      }
+    }
+
+    .earth-planet {
+      position: absolute;
+      border-radius: 50%;
+      width: 520px;
+      height: 520px;
+      transform: scale(2.5) translateY(38%) rotate(12.2deg);
+      animation: earth-planet-size 1.8s cubic-bezier(.76, -.46, .37, .99);
+    }
+
+    @media (max-width: 480px) {
+      .earth-planet {
+        transform: scale(1.5) translateY(28%) rotate(12.2deg);
+      }
+    }
+
+    @keyframes earth-planet-size {
+      0% {
+        transform: scale(1) translateY(0) rotate(-12.2deg)
+      }
+    }
+
+    .btn-title {
+      cursor: pointer;
+      border-radius: 9999px;
+      padding: 8px 16px;
+      color: #fff;
+      background: linear-gradient(to right, #3b82f6, #2563eb, #2563eb);
+      box-shadow: 0 8px 15px -3px #3b82f680, 0 4px 6px -4px #3b82f680;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .satellite {
+      position: absolute;
+      top: -40px;
+      left: -40px;
+      border-radius: 50%;
+      width: calc(100% + 80px);
+      height: calc(100% + 80px);
+      border: .5px dashed rgba(255, 255, 255, .48);
+      animation: satellite-rotate 40s infinite linear;
+    }
+
+    @keyframes satellite-rotate {
+      0% {
+        transform: rotate(0)
+      }
+    
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .satellite .railway{
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      animation: satellite-i 1.68s ease-in-out forwards;
+    }
+
+    @keyframes satellite-i {
+      0% {
+        opacity: 0;
+        transform: rotate(-45deg)
+      }
+    
+      to {
+        opacity: 1
+      }
+    }
+
+    .satellite .railway:nth-child(1) {
+      transform: rotate(calc(var(--railway-angle) * (1 - 1)))
+    }
+
+    .satellite .railway:nth-child(2) {
+      transform: rotate(calc(var(--railway-angle) * (2 - 1)))
+    }
+
+    .satellite .railway:nth-child(3) {
+      transform: rotate(calc(var(--railway-angle) * (3 - 1)))
+    }
+
+    .satellite .railway:nth-child(4) {
+      transform: rotate(calc(var(--railway-angle) * (4 - 1)))
+    }
+
+    .satellite .railway:nth-child(5) {
+      transform: rotate(calc(var(--railway-angle) * (5 - 1)))
+    }
+
+    .satellite .railway:nth-child(6) {
+      transform: rotate(calc(var(--railway-angle) * (6 - 1)))
+    }
+
+    .satellite .feature {
+      position: absolute;
+      top: -33px;
+      left: calc(50% - 30px);
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4px;
+      font-size: 10px;
+      line-height: 1.2;
+      transform: scale(.68);
+    }
+  </style>
+</head>
+<body>
+  <div class="space-box" style="background: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.42)), url('./img/bg.webp') center center / cover no-repeat;">
+    <div class="earth-planet">
+      <div class="earth-box">
+        <div class="earth" style="background-image: url('./img/earth.webp');"></div>
+      </div>
+      <div class="satellite" style="--railway-angle: 72deg;">
+        <div class="railway" aria-level="0">
+          <div class="feature">
+            <span class="btn-title">iotheme</span>
+          </div>
+        </div>
+        <div class="railway" aria-level="1">
+          <div class="feature">
+            <span class="btn-title">一为</span>
+          </div>
+        </div>
+        <div class="railway" aria-level="2">
+          <div class="feature">
+            <span class="btn-title">iotab</span>
+          </div>
+        </div>
+        <div class="railway" aria-level="3">
+          <div class="feature">
+            <span class="btn-title">onenav</span>
+          </div>
+        </div>
+        <div class="railway" aria-level="4">
+          <div class="feature">
+            <span class="btn-title">Swallow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

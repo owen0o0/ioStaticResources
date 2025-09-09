@@ -3,27 +3,28 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="robots" content="noindex">
-	<title>io-fx09 - iowen.cn</title>
-    <style>
-    * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+	<title>io-fx09</title>
+	<meta name="author" content="iowen.cn">
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-body {
-	background-color: #000;
-	overflow: hidden;
-}
+	body {
+		background-color: #000;
+		overflow: hidden;
+	}
 
-#holder {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-}
+	#holder {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
     </style>
 </head>
 <body>
@@ -136,7 +137,6 @@ body {
 		Waves.radius = Math.sqrt(Math.pow(Waves.width, 2) + Math.pow(Waves.height, 2)) / 2;
 		Waves.centerX = Waves.width / 2;
 		Waves.centerY = Waves.height / 2;
-		//Waves.radius /= 2; // REMOVE FOR FULLSREEN
 	};
 	Waves.prototype.updateColor = function() {
 		var Waves = this;
